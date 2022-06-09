@@ -13,6 +13,7 @@ https://opencv-java-tutorials.readthedocs.io/en/latest/01-installing-opencv-for-
 ## Dependencies
 
 OpenCV - Java
+
 Swing 
 
 ## Sources
