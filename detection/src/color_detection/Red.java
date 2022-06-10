@@ -2,8 +2,15 @@ package color_detection;
 
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Red {
     Mat FRAME;
@@ -39,17 +46,34 @@ public class Red {
     }
 
     private Mat createMask(Mat frame) {
-        hsv = new Mat();
-        mask = new Mat();
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject file = (JSONObject) parser.parse(new FileReader("E:\\sathya\\detection\\src\\color_detection\\constants.json"));
+            hsv = new Mat();
+            mask = new Mat();
 
-        lower = new Scalar(158, 84, 128);
-        upper = new Scalar(255, 255, 174);
+            HashMap data_red = (HashMap) file.get("hsv_red");
 
-        Imgproc.cvtColor(frame, hsv, Imgproc.COLOR_BGR2HSV);
-        Core.inRange(hsv, lower, upper, mask);
+            //lower = new Scalar(158, 84, 128);
+            //upper = new Scalar(255, 255, 174);
 
+            lower = new Scalar(Double.valueOf(String.valueOf(data_red.get("low_h"))), Double.valueOf(String.valueOf(data_red.get("low_s"))), Double.valueOf(String.valueOf(data_red.get("low_v"))));
+            upper = new Scalar(Double.valueOf(String.valueOf(data_red.get("high_h"))), Double.valueOf(String.valueOf(data_red.get("high_s"))), Double.valueOf(String.valueOf(data_red.get("high_v"))));
+
+            Imgproc.cvtColor(frame, hsv, Imgproc.COLOR_BGR2HSV);
+            Core.inRange(hsv, lower, upper, mask);
+
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (ParseException e) {
+            e.printStackTrace();
+
+        }
         return mask;
     }
-
-
 }
