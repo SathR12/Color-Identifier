@@ -1,0 +1,36 @@
+{
+
+  "hsv_red": {
+
+    "low_h": 158,
+    "low_s": 84,
+    "low_v": 128,
+    "high_h": 255,
+    "high_s": 255,
+    "high_v": 174
+
+  },
+
+  "hsv_blue": {
+
+    "low_h": 98,
+    "low_s": 197,
+    "low_v": 0,
+    "high_h": 132,
+    "high_s": 255,
+    "high_v": 255
+
+  },
+
+  "hsv_green": {
+
+    "low_h": 53,
+    "low_s": 51,
+    "low_v": 0,
+    "high_h": 98,
+    "high_s": 255,
+    "high_v": 107
+
+  }
+
+}
