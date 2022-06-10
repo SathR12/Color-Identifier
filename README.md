@@ -16,6 +16,9 @@ OpenCV - Java
 
 Swing 
 
+Json
+
+
 ## Sources
 
 https://opencv-java-tutorials.readthedocs.io/en/latest/
